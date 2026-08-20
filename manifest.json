@@ -1,0 +1,26 @@
+{
+  "name": "Diario Botanico",
+  "short_name": "DiarioBotani",
+  "description": "Diario Botanico di Samuel - Collegamento PWA",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#080a08",
+  "theme_color": "#4c8c73",
+  "orientation": "portrait",
+  "categories": [
+    "lifestyle",
+    "personalization"
+  ],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Diario Botanico",
+  "description": "Diario Botanico | PWA per la collezione e gli appunti botanici di Samuel",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

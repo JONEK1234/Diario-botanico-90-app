@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diario Botanico | Samuel</title>
+    
+    <!-- PWA Meta tags & Icons -->
+    <meta name="theme-color" content="#4c8c73">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./icon-192.png">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        botanical: {
+                            50: '#f2f8f5',
+                            100: '#e1efe8',
+                            200: '#c5dfd3',
+                            300: '#9bc8b6',
+                            400: '#6ca891',
+                            500: '#4c8c73',
+                            600: '#3a705b',
+                            700: '#2f5b4b',
+                            800: '#274b3f',
+                            900: '#213f35',
+                            950: '#0e1d18',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(14, 29, 24, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .btn-glow {
+            box-shadow: 0 0 15px rgba(108, 168, 145, 0.35);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 25px rgba(108, 168, 145, 0.6);
+            transform: translateY(-2px);
+        }
+        .leaf-pattern {
+            background-image: url('cover.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-botanical-950 text-botanical-50 min-h-screen flex items-center justify-center overflow-hidden font-sans antialiased relative">
+    
+    <!-- Background Cover with dark overlay -->
+    <div class="absolute inset-0 leaf-pattern transform scale-105 duration-1000 origin-center bg-no-repeat"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-botanical-950 via-botanical-950/80 to-botanical-900/60 backdrop-brightness-[0.75]"></div>
+
+    <!-- Floating ambiance ambient spheres -->
+    <div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-emerald-900/20 blur-[130px] pointer-events-none"></div>
+    <div class="absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-teal-900/20 blur-[130px] pointer-events-none"></div>
+
+    <!-- MAIN CONTAINER -->
+    <main class="relative z-10 w-full max-w-md px-6 flex flex-col items-center">
+        
+        <!-- HEADER branding -->
+        <div class="flex items-center space-x-2 mb-8 animate-fade-in">
+            <span class="p-1.5 rounded-lg bg-botanical-500/10 border border-botanical-500/20 text-botanical-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sprout"><path d="M7 20h10"/><path d="M10 20c5.5-2.5 8-5 8-10 0-4-3-4-3-4s-1.5 2.5-3.5 5.5"/><path d="M14 20c-5.5-2.5-8-5-8-10 0-4 3-4 3-4s1.5 2.5 3.5 5.5"/></svg>
+            </span>
+            <span class="font-mono text-xs tracking-widest text-botanical-300 uppercase">Diario Botanico</span>
+        </div>
+
+        <!-- FIRST LOAD VIEW: Interactive Card -->
+        <div id="first-load-view" class="w-full glass-panel rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden hidden transform transition-all duration-300">
+            <!-- Decorative light reflected top corner -->
+            <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+            
+            <span class="inline-flex p-3 rounded-full bg-botanical-500/15 mb-5 border border-botanical-500/30 text-botanical-300 shadow-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open-text"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/><path d="M6 8h2"/><path d="M6 12h2"/><path d="M16 8h2"/><path d="M16 12h2"/></svg>
+            </span>
+
+            <h1 class="serif-title text-3xl font-normal leading-tight text-white mb-3">
+                Benvenuto nel tuo<br/>
+                <span class="text-botanical-300 italic font-semibold">Diario Botanico</span>
+            </h1>
+
+            <p class="text-botanical-200/80 text-sm mb-8 font-light leading-relaxed">
+                Esplora la collezione e gli appunti botanici digitalizzati di <strong>Samuel</strong>. Un viaggio immersivo tra piante, cure ed erbari.
+            </p>
+
+            <button id="open-btn" onclick="handleMainButtonClick()" class="w-full py-4 px-6 rounded-2xl bg-botanical-400 hover:bg-botanical-300 text-botanical-950 font-semibold tracking-wide btn-glow flex items-center justify-center space-x-2 cursor-pointer font-sans">
+                <span>Apri il diario botanico di Samuel</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+        </div>
+
+        <!-- REDIRECT LOADER VIEW -->
+        <div id="redirect-loader-view" class="w-full glass-panel rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden hidden transform transition-all duration-300">
+            <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+            
+            <div class="relative w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                <!-- Outer animate spin ring -->
+                <div class="absolute inset-0 rounded-full border-2 border-botanical-500/20"></div>
+                <div class="absolute inset-0 rounded-full border-2 border-t-botanical-400 animate-spin"></div>
+                <!-- Sprout center icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-botanical-300"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+
+            <h2 class="serif-title text-2xl font-light text-white mb-2">Caricamento in corso...</h2>
+            <p id="countdown-text" class="text-botanical-300 text-xs font-mono mb-6 uppercase tracking-wider">Reindirizzamento in arrivo...</p>
+
+            <!-- Custom modern progress bar container -->
+            <div class="w-full h-1 bg-botanical-950/60 rounded-full overflow-hidden mb-6 p-[1px]">
+                <div id="progress-bar" class="h-full bg-gradient-to-r from-botanical-500 to-botanical-300 rounded-full transition-all duration-[20ms]" style="width: 0%"></div>
+            </div>
+
+            <div class="flex flex-col space-y-3">
+                <button onclick="handleMainButtonClick()" class="text-xs text-botanical-300/80 hover:text-white transition-colors underline underline-offset-4 cursor-pointer">
+                    Non vuoi aspettare? Apri subito
+                </button>
+                <button onclick="resetFirstLoad()" class="text-[10px] text-botanical-500 hover:text-botanical-300 transition-colors cursor-pointer pt-2">
+                    🔄 Resetta e visualizza la scheda iniziale
+                </button>
+            </div>
+        </div>
+
+        <!-- FOOTER watermark (clean & direct) -->
+        <div class="mt-8 text-[11px] text-botanical-400/50 hover:text-botanical-400/80 transition-colors flex items-center space-x-1.5 cursor-pointer" onclick="resetFirstLoad()">
+            <span>Sviluppato con amore per Samuel</span>
+            <span>•</span>
+            <span class="underline">Resetta memoria</span>
+        </div>
+
+    </main>
+
+    <!-- LOGIC SCRIPT -->
+    <script>
+        const storageKey = 'diario_botanico_redirected';
+        const targetUrl = "https://diario-botanico-90.vercel.app/";
+        const delayMs = 3500;
+        
+        // Safety check to bypass localstorage lock during editing if required
+        const isFirstLoad = !localStorage.getItem(storageKey);
+
+        const firstLoadView = document.getElementById('first-load-view');
+        const redirectLoaderView = document.getElementById('redirect-loader-view');
+
+        if (isFirstLoad) {
+            // Show the welcome card first
+            firstLoadView.classList.remove('hidden');
+        } else {
+            // Instant Loading & Redirect screen
+            redirectLoaderView.classList.remove('hidden');
+            
+            let currentStep = 0;
+            const step = 20; // Check and animate frame every 20ms
+            const totalSteps = delayMs / step;
+            const progressBar = document.getElementById('progress-bar');
+            const countdownText = document.getElementById('countdown-text');
+
+            const interval = setInterval(() => {
+                currentStep++;
+                const percentage = (currentStep / totalSteps) * 100;
+                
+                progressBar.style.width = Math.min(percentage, 100) + '%';
+                
+                const remainingSeconds = Math.max(0, ((delayMs - (currentStep * step)) / 1000)).toFixed(1);
+                countdownText.innerText = "Reindirizzamento in corso in " + remainingSeconds + "s...";
+
+                if (currentStep >= totalSteps) {
+                    clearInterval(interval);
+                    // Safe browser redirection to Verce/Diary link
+                    window.location.replace(targetUrl);
+                }
+            }, step);
+        }
+
+        function handleMainButtonClick() {
+            localStorage.setItem(storageKey, 'true');
+            window.location.href = targetUrl;
+        }
+
+        function resetFirstLoad() {
+            localStorage.removeItem(storageKey);
+            window.location.reload();
+        }
+
+        // Register progressive web app service worker 
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('PWA Service Worker registrato con scope:', reg.scope))
+                    .catch(err => console.error('Fallimento registrazione PWA Service Worker:', err));
+            });
+        }
+    </script>
+</body>
+</html>
